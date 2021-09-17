@@ -1,0 +1,116 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<html>
+<head>
+<!--    <meta charset="UTF-8">-->
+    <title>Feedback_Form</title>
+    {% include 'cdnlines.html' %}
+</head>
+<style>
+ h2 {
+	font-family:M-Saras;
+	font-size: 13px;
+	color: maroon;
+	text-align: center;
+     }
+
+h3 {
+    font-family:M-Saras;
+<!--	font-family: Verdana, Arial, Helvetica, sans-serif;-->
+	font-size: 13px;
+	color: orange;
+	text-align: center;
+	 }
+
+}
+    input[name],textarea{
+        margin-top: -10px;
+    }
+    input[value]{
+        margin-top: 5px;
+    }
+
+    h4 {
+	font-family:Comic Sans MS;
+	font-size: 16px;
+	color:gray;
+    text-align: center;
+     }
+<!--    body {-->
+<!--        background-image:url("loveudad.jpg");-->
+<!--        background-size: cover;-->
+<!--        background-attachment: fixed;-->
+}
+
+    div1 {
+        font-family:Comic Sans MS;
+        color: pink;
+        font-size: 14px;
+}
+</style>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="offset-md-4 col-md-4">
+
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <br>
+                    <h2>नाथसंविध</h2>
+
+                    <h3> त्रिविक्रम गजर</h3><br>
+
+
+<!--                    <label>Enter Your Name:</label>-->
+                    <input type="text" name="name" class="form-control" placeholder="पठण करणाऱ्याचे नाव"><br>
+
+<!--                    <label>Enter Your Rating:</label>-->
+                    <input type="text" name="ramnaamjap" class="form-control" placeholder="जपमाळ संख्या"><br>
+
+<!--                    <label>Enter Your Feedback:</label>-->
+<!--                    <textarea name="feedback" class="form-control" placeholder="Your Feedback Here..."></textarea>-->
+<!--                    <textarea name="feedback" class="form-control" placeholder="Your Feedback Here...">-->
+
+                    <center>
+                    <input type="submit" value="पाठवा" class="btn btn-success">
+<!--                    <input type="reset" value="clear" class="btn btn-danger">-->
+                    </center>
+                    <br>
+                     <hr>
+
+<!--                    <div class="messages">-->
+<!--                        {% if messages %}-->
+
+<!--                            {% for message in messages %}-->
+<!--                            <p class="alert alert-{{ message.tags }}">-->
+<!--                                {{ message }}-->
+<!--                            </p>-->
+<!--                            {% endfor %}-->
+<!--                        {% endif %}-->
+<!--                    </div>-->
+
+
+                    {% if narayana %}
+                    <h4>Available Feedbacks are...</h4><br>
+                    <div1 class="row">
+                    {{ narayana.count }} Feedbacks
+                    </div1><br>
+                    {% for i in narayana %}
+
+                        <b>Name: {{ i.name|capfirst }}</b><br>
+                        ramnaamjap: {{ i.ramnaamjap }}<br>
+                        Date: {{ i.feedback_date }}<br><br>
+<!--                        Feedback: {{ i.feedback }}<br><br>-->
+                    {% endfor %}
+
+                {% else %}
+                    <h1>No Feedbacks Are Available</h1>
+                {% endif %}
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
